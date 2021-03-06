@@ -7,7 +7,7 @@ Instaclone Backend.
 - [x] Create Account
 - [x] See Profile
 - [x] Login
-- [ ] Edit Profile
+- [x] Edit Profile
 - [ ] Follow Users
 - [ ] Unfollow Users
 - [ ] Change profile picture (Image Upload)
