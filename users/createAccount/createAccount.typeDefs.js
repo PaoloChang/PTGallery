@@ -1,6 +1,10 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
+    type createAccountResult {
+        status: Boolean!
+        error: String
+    }
     type Mutation {
         createAccount(
             firstName: String!
@@ -8,6 +12,6 @@ export default gql`
             username: String!
             email: String!
             password: String!
-        ): User
+        ): createAccountResult!
     }
 `;
