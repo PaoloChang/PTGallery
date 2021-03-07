@@ -8,6 +8,7 @@ Instaclone Backend.
 - [x] See Profile
 - [x] Login
 - [x] Edit Profile
+- [x] Upload Image (Avatar)
 - [ ] Follow Users
 - [ ] Unfollow Users
 - [ ] Change profile picture (Image Upload)
@@ -25,7 +26,6 @@ Instaclone Backend.
 
 ## Comments
 
-- [ ] See Photo
-- [ ] Upload Photo
-- [ ] Edit Photo
-- [ ] Like / Unlike Photo
+- [ ] Comment on Photo
+- [ ] Edit Comment
+- [ ] Delete Comment

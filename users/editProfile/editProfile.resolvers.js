@@ -9,16 +9,22 @@ const resolverFunc = async (
     { loggedInUser }
 ) => {
 
-    /**
-     * Phase 1. Save image to the database by using node.js
-     *          writeStream is an example of saving files by using node.js
-     * Phase 2. Save image to the AWS and add returned URL to the database
-     */
-    const { filename, createReadStream } = await avatar;
+    let avatarURL = null;
 
-    const readStream = createReadStream();
-    const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename);
-    readStream.pipe(writeStream);
+    if (avatar) {
+        /**
+         * Phase 1. Save image to the database by using node.js
+         *          writeStream is an example of saving files by using node.js
+         * Phase 2. Save image to the AWS and add returned URL to the database
+         */
+        const { filename, createReadStream } = await avatar;
+    
+        const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+        const readStream = createReadStream();
+        const writeStream = createWriteStream(process.cwd() + "/uploads/" + newFilename);
+        readStream.pipe(writeStream);
+        avatarURL = `http://localhost:4000/static/${newFilename}`;
+    }
 
     let hashPassword = null;
 
@@ -36,7 +42,8 @@ const resolverFunc = async (
             username,
             email,
             bio,
-            ...(hashPassword && { password: hashPassword})
+            ...(hashPassword && { password: hashPassword }),
+            ...(avatarURL && { avatar: avatarURL })
         }
     });
 
