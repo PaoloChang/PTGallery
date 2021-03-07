@@ -42,7 +42,10 @@ export default {
                     status: true
                 }
             } catch (e) {
-                return e;
+                return {
+                    status: false,
+                    error: "Cannot create account."
+                }
             }
         }
     }
