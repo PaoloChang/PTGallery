@@ -1,12 +1,25 @@
+import { createWriteStream } from 'fs';
 import bcrypt from 'bcrypt';
 import client from "../../client";
 import { protectedResolver } from '../users.utils';
 
 const resolverFunc = async (
     _, 
-    { firstName, lastName, username, email, password:newPassword },
+    { firstName, lastName, username, email, avatar, bio, password:newPassword },
     { loggedInUser }
 ) => {
+
+    /**
+     * Phase 1. Save image to the database by using node.js
+     *          writeStream is an example of saving files by using node.js
+     * Phase 2. Save image to the AWS and add returned URL to the database
+     */
+    const { filename, createReadStream } = await avatar;
+
+    const readStream = createReadStream();
+    const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename);
+    readStream.pipe(writeStream);
+
     let hashPassword = null;
 
     if (newPassword) {
@@ -22,6 +35,7 @@ const resolverFunc = async (
             lastName,
             username,
             email,
+            bio,
             ...(hashPassword && { password: hashPassword})
         }
     });
