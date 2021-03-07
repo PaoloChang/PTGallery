@@ -1,5 +1,5 @@
 import { createWriteStream } from 'fs';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import client from "../../client";
 import { protectedResolver } from '../users.utils';
 
