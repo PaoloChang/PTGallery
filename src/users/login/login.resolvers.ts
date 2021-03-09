@@ -1,10 +1,10 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import client from "../../client"
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { Resolvers } from '../../types';
 
-export default {
+const resolvers: Resolvers = {
     Mutation: {
-        login: async(_, { username, password }) => {
+        login: async(_, { username, password }, { client }) => {
 
             /** (1) find the user with args.username */
             const user = await client.user.findFirst({
@@ -35,3 +35,5 @@ export default {
         }
     }
 }
+
+export default resolvers;
