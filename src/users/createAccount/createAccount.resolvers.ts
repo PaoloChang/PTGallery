@@ -1,15 +1,12 @@
-import bcrypt from 'bcryptjs';
-import client from "../../client"
+import * as bcrypt from 'bcryptjs';
+import { Resolvers } from '../../types';
 
-export default {
+const resolvers: Resolvers = {
     Mutation: {
-        createAccount: async (_, {
-            firstName,
-            lastName,
-            username,
-            email,
-            password
-        }) => {
+        createAccount: async (_, 
+            { firstName, lastName, username, email, password },
+            { client }    
+        ) => {
 
             try {
                 /** (1) search a user with the same username OR email */
@@ -50,3 +47,5 @@ export default {
         }
     }
 }
+
+export default resolvers;

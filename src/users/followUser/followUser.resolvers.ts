@@ -1,26 +1,26 @@
-import client from "../../client";
+import { Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
 
-export default {
+const resolvers: Resolvers = {
     Mutation: {
-        unfollowUser: protectedResolver( async (_, { username }, { loggedInUser }) => {
-            
+        followUser: protectedResolver(async (_, { username }, { client, loggedInUser }) => {
+
             const validUser = await client.user.findUnique({ where: { username }});
 
             if (!validUser) {
                 return {
                     status: false,
-                    error: "Username does not exist."
-                };
+                    error: "Username does not exist"
+                }
             }
 
-            await client.user.update({ 
-                where: {
-                    id: loggedInUser.id
+            await client.user.update({
+                where: { 
+                    id: loggedInUser.id 
                 },
                 data: {
                     following: {
-                        disconnect: {
+                        connect: {
                             username
                         }
                     }
@@ -30,6 +30,9 @@ export default {
             return {
                 status: true
             }
+
         })
     }
 }
+
+export default resolvers;
