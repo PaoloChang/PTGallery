@@ -6,6 +6,7 @@ import client from './client';
 import { typeDefs, resolvers } from './schema';
 import { getUser, protectedResolver } from './users/users.utils';
 
+const IP_ADDRESS = process.env.IP_ADDRESS;
 const PORT = process.env.PORT;
 
 const apollo = new ApolloServer({
@@ -26,5 +27,5 @@ apollo.applyMiddleware({ app });
 app.use("/static", express.static("uploads"));
 
 app.listen({ port: PORT }, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}/graphql ✅`)
+    console.log(`🚀 Server is running on http://${IP_ADDRESS}:${PORT}/graphql ✅`)
 })
