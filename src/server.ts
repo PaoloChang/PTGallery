@@ -1,5 +1,4 @@
 require('dotenv').config();
-// import express from 'express';
 import express = require('express');
 import * as logger from 'morgan';
 import { ApolloServer } from 'apollo-server-express';
