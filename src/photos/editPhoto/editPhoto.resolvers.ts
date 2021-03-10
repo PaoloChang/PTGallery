@@ -1,6 +1,6 @@
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
-import { extractHashtagsIntoArray } from "../photos.utils";
+import { extractHashtagsFrom } from "../photos.utils";
 
 const resolvers: Resolvers = {
     Mutation: {
@@ -32,7 +32,7 @@ const resolvers: Resolvers = {
                     caption,
                     hashtags: {
                         disconnect: oldPhoto.hashtags,
-                        connectOrCreate: extractHashtagsIntoArray(caption),
+                        connectOrCreate: extractHashtagsFrom(caption),
                     }
                 }
             })
