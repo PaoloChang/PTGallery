@@ -1,6 +1,7 @@
 import { Resolvers } from "../types"
 
 const resolvers: Resolvers = {
+
     Photo: {
         user: ({ userId }, _, { client }) => {
             return client.user.findUnique({ where: { id: userId }});
@@ -16,8 +17,12 @@ const resolvers: Resolvers = {
         },
         likes: ({ id }, _, { client }) => {
             return client.like.count({ where: { photoId: id }});
-        }
+        },
+        comments: ({ id }, _, { client }) => {
+            return client.comment.count({ where: { photoId: id }});
+        },
     },
+
     Hashtag: {
         photos: ({ id }, { lastId }, { client }) => {
             return client.photo.findMany({
@@ -39,7 +44,7 @@ const resolvers: Resolvers = {
                     }
                 }
             })
-        }
+        },
     }
 }
 
