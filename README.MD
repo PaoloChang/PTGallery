@@ -31,8 +31,8 @@ Instaclone Backend.
 ## Comments
 
 - [x] Create Comment on Photo
-- [ ] Edit Comment
-- [ ] Delete Comment (Is Mine)
+- [x] Edit Comment
+- [x] Delete Comment (Is Mine)
 
 ## Extras
 
