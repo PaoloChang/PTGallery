@@ -28,10 +28,10 @@ export default {
                     }
                 }
             }),
-        isMyAccount: ({ id }, _, { loggedInUser }) => {
-            // if (!loggedInUser) {
-            //     return false;
-            // }
+        isMine: ({ id }, _, { loggedInUser }) => {
+            if (!loggedInUser) {
+                return false;
+            }
             return id === loggedInUser?.id;
         },
         isFollowing: async ({ id }, _, { loggedInUser }) => {
