@@ -1,3 +1,4 @@
+import { uploadImageToS3 } from "../../shared/shared.utils";
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 import { extractHashtagsFrom } from "../photos.utils";
@@ -16,9 +17,11 @@ const resolvers: Resolvers = {
                 hashtagObjs = extractHashtagsFrom(caption);
             }
             
+            const imageURL = await uploadImageToS3(image, loggedInUser.id, "galleries");
+
             await client.photo.create({
                 data: {
-                    image,
+                    image: imageURL,
                     caption,
                     user: {
                         connect: {
