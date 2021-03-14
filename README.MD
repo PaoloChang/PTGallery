@@ -37,3 +37,12 @@ Photo Gallery application built with Express, Apollo, GraphQL, React (TypeScript
 ## Extras
 
 - [x] S3 Image Upload
+
+## Direct Messages
+
+- [x] See Rooms
+- [x] Send Message (Create Chat Room)
+- [x] See Room
+- [x] Computed Fields
+- [x] See Message
+- [ ] Realtime Messages
