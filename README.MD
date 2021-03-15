@@ -1,4 +1,4 @@
-# PTGallery
+# PGallery
 
 Photo Gallery application built with Express, Apollo, GraphQL, React (TypeScripts).
 
