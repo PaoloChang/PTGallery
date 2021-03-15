@@ -45,4 +45,4 @@ Photo Gallery application built with Express, Apollo, GraphQL, React (TypeScript
 - [x] See Room
 - [x] Computed Fields
 - [x] See Message
-- [ ] Realtime Messages
+- [x] Realtime Messages
