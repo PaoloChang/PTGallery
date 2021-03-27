@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
-    type Mutation {
-        followUser(username: String): MutationResponse!
-    }
+  type Mutation {
+    followUser(username: String!): MutationResponse!
+  }
 `;
