@@ -1,16 +1,10 @@
 import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
-    Query: {
-        seePhoto: (_, { id }, { client } ) => {
-            const photo = client.photo.findUnique({ where: { id }})
-            
-            return {
-                status: true,
-                photo
-            }
-        }
-    }
-}
+  Query: {
+    seePhoto: (_, { id }, { client }) =>
+      client.photo.findUnique({ where: { id } }),
+  },
+};
 
 export default resolvers;

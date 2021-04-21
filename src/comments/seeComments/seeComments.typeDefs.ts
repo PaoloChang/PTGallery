@@ -2,6 +2,6 @@ import gql from "graphql-tag";
 
 export default gql`
   type Query {
-    seePhoto(id: Int!): Photo
+    seeComments(photoId: Int!, offset: Int): [Comment]
   }
 `;
