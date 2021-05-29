@@ -3,7 +3,7 @@ import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 import { extractHashtagsFrom } from "../photos.utils";
 
-const resolvers: Resolvers = {
+export default {
   Mutation: {
     uploadPhoto: protectedResolver(
       async (_, { image, caption }, { client, loggedInUser }) => {
@@ -50,5 +50,3 @@ const resolvers: Resolvers = {
     ),
   },
 };
-
-export default resolvers;

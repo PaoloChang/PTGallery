@@ -1,7 +1,7 @@
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
-const resolvers: Resolvers = {
+export default {
   Mutation: {
     createComment: protectedResolver(
       async (_, { photoId, payload }, { client, loggedInUser }) => {
@@ -37,5 +37,3 @@ const resolvers: Resolvers = {
     ),
   },
 };
-
-export default resolvers;

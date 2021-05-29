@@ -1,6 +1,6 @@
 import { Resolvers } from "../types";
 
-const resolvers: Resolvers = {
+export default {
   Photo: {
     user: ({ userId }, _, { client }) => {
       return client.user.findUnique({ where: { id: userId } });
@@ -80,5 +80,3 @@ const resolvers: Resolvers = {
     },
   },
 };
-
-export default resolvers;

@@ -1,21 +1,18 @@
 import { Resolvers } from "../../types";
 
-const resolvers: Resolvers = {
-    Query: {
-        seePhotoLikes: async (_, { id }, { client }) => {
-            
-            const likes = await client.like.findMany({
-                where: {
-                    photoId: id,
-                },
-                select: {
-                    user: true,
-                }
-            });
-            
-            return likes.map(like => like.user);
-        }
-    }
-}
+export default {
+  Query: {
+    seePhotoLikes: async (_, { id }, { client }) => {
+      const likes = await client.like.findMany({
+        where: {
+          photoId: id,
+        },
+        select: {
+          user: true,
+        },
+      });
 
-export default resolvers;
+      return likes.map((like) => like.user);
+    },
+  },
+};

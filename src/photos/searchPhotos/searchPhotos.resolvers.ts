@@ -1,6 +1,6 @@
 import { Resolvers } from "../../types";
 
-const resolvers: Resolvers = {
+export default {
   Query: {
     searchPhotos: (_, { keyword, offset }, { client }) => {
       /**
@@ -24,5 +24,3 @@ const resolvers: Resolvers = {
     },
   },
 };
-
-export default resolvers;

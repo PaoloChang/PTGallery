@@ -1,7 +1,7 @@
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
-const resolvers: Resolvers = {
+export default {
   Query: {
     seeComments: protectedResolver((_, { photoId, offset }, { client }) =>
       client.comment.findMany({
@@ -13,5 +13,3 @@ const resolvers: Resolvers = {
     ),
   },
 };
-
-export default resolvers;
